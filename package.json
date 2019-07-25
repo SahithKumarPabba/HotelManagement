@@ -1,0 +1,15 @@
+{
+  "name": "checkout",
+  "version": "1.0.0",
+  "description": "Customer Checkout Service",
+  "scripts": {
+    "test": "mocha \"test/**/**.test.js\"",
+    "start": "node ./src/server.js"
+  },
+  "author": "SAHITH KUMAR PABBA",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mssql": "^5.1.0"
+  }
+}
