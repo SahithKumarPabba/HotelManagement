@@ -28,7 +28,7 @@ class dal {
                 sql.close();
 
                 // send records as a response
-                res.send(recordset);
+                res.send(recordset.recordsets);
                 
             });
         });
@@ -51,7 +51,7 @@ class dal {
                 sql.close();
 
                 // send records as a response
-                res.send(recordset);
+                res.send(recordset.recordsets);
                 
             });
         });
