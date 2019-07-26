@@ -45,7 +45,7 @@ class dal {
             var request = new sql.Request();
             
             // query to the database and get the records
-            request.query('select * from ' + tableName + ' where name = ' +paramname, function (err, recordset) {
+            request.query("select * from " + tableName + " where name = " + "'" + paramname + "'" , function (err, recordset) {
                 
                 if (err) console.log(err);
                 sql.close();
