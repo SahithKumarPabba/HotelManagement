@@ -17,8 +17,13 @@ npm test
 
 ## Development
 
-Default port is 33310.
+Default port is 8080.
 
 ##Health end point
 
-localhost:33310/health
+localhost:8080/health
+
+#spin up DB
+
+docker-compose build
+docker-compose up
