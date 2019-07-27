@@ -4,7 +4,7 @@
   "description": "Customer Checkout Service",
   "scripts": {
     "test": "mocha \"test/**/**.test.js\"",
-    "start": "node ./src/server.js"
+    "start": "node ./server.js"
   },
   "author": "SAHITH KUMAR PABBA",
   "license": "ISC",

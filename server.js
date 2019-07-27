@@ -1,10 +1,10 @@
 const express = require('express');
 app = express();
-const port = 33310;
-const health = require('./api/controllers/health');
-const availability = require('./api/controllers/availability');
-const reservation = require('./api/controllers/reservation');
-const user = require('./api/controllers/user');
+const port = 8080;
+const health = require('./src/api/controllers/health');
+const availability = require('./src/api/controllers/availability');
+const reservation = require('./src/api/controllers/reservation');
+const user = require('./src/api/controllers/user');
 
 app.get(['/', '/health'], (req, res) => {
     health.getHealth(req, res);
