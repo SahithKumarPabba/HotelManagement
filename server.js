@@ -1,5 +1,7 @@
 const express = require('express');
-app = express();
+const bodyParser  = require('body-parser');
+const app = express();
+app.use(bodyParser.json());
 const port = 8080;
 const health = require('./src/api/controllers/health');
 const availability = require('./src/api/controllers/availability');
@@ -16,6 +18,10 @@ app.get('/availability', (req,res) => {
 
 app.get('/userinfo/:name', (req,res) => {
     user.getByName(req,res);
+});
+
+app.post('/makeReservation', (req, res) => {
+    reservation.makeReservation(req,res);
 });
 
 app.listen(port, () => console.log(`service started on port ${port}!`));

@@ -89,7 +89,7 @@ CREATE TABLE [dbo].[bookinginfo](
 	[BookingId] [nvarchar](100) NOT NULL,
 	[UserId] [nvarchar](100) NOT NULL FOREIGN KEY (UserId) REFERENCES UserInfo(Id),
 	[RoomId] [nvarchar](100) NOT NULL FOREIGN KEY (RoomId) REFERENCES HotelRoomInfo(Id),
-	[Stauts] [nvarchar](50),
+	[Status] [nvarchar](50),
 	[BookingDate] [datetime] NOT NULL,
  CONSTRAINT [PK_bookinginfo] PRIMARY KEY CLUSTERED 
 (
