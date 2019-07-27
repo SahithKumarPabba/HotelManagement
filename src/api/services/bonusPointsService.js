@@ -1,4 +1,5 @@
 var dal = require('../dal/dal');
+var auth = require('../middleware/auth');
 
 class bonusPointsService {
 
@@ -6,9 +7,9 @@ class bonusPointsService {
         return dal.getByParam('bonuspoints', 'id', id);
     }
 
-    static updateBonusPoints(id, pointsAccumulated, pointsConsumed, pointsLeft){
+    static updateBonusPoints(token, pointsAccumulated, pointsConsumed, pointsLeft){
         return new Promise((resolve,reject) => {
-            return dal.updateBonusPoints(id, pointsAccumulated, pointsConsumed, pointsLeft)
+            return dal.updateBonusPoints(auth.decodeToken(token), pointsAccumulated, pointsConsumed, pointsLeft)
                 .then(()=> { 
                     resolve(); 
                 })
@@ -24,7 +25,7 @@ class bonusPointsService {
                         if(result && result.length > 0){
                             bonusPointsInfo = result;
                             if(roominfo.RequiredPoints < bonusPointsInfo[0].PointsLeft){
-                                return bonusPointsService.updateBonusPoints(id, bonusPointsInfo[0].PointsAccumulated,
+                                return bonusPointsService.updateBonusPoints(auth.getToken(id), bonusPointsInfo[0].PointsAccumulated,
                                     bonusPointsInfo[0].PointsConsumed + roominfo.RequiredPoints, bonusPointsInfo[0].PointsLeft - roominfo.RequiredPoints)
                                     .then(() => { 
                                         resolve();
