@@ -4,7 +4,7 @@ var sql = require("mssql");
 var config = {
     user: 'sa',
     password: 'admin@123',
-    server: 'localhost', 
+    server: 'db', 
     database: 'hotelManagementSystem' 
 };
 
