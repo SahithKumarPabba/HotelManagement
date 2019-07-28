@@ -9,6 +9,7 @@ class bonusPointsService {
 
     static updateBonusPoints(token, pointsAccumulated, pointsConsumed, pointsLeft){
         return new Promise((resolve,reject) => {
+            //token to make this api internal
             return dal.updateBonusPoints(auth.decodeToken(token), pointsAccumulated, pointsConsumed, pointsLeft)
                 .then(()=> { 
                     resolve(); 
@@ -25,6 +26,7 @@ class bonusPointsService {
                         if(result && result.length > 0){
                             bonusPointsInfo = result;
                             if(roominfo.RequiredPoints < bonusPointsInfo[0].PointsLeft){
+                                //generate the token for the internal api
                                 return bonusPointsService.updateBonusPoints(auth.getToken(id), bonusPointsInfo[0].PointsAccumulated,
                                     bonusPointsInfo[0].PointsConsumed + roominfo.RequiredPoints, bonusPointsInfo[0].PointsLeft - roominfo.RequiredPoints)
                                     .then(() => { 
