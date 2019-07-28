@@ -35,8 +35,8 @@ docker-compose up
 Endpoint: POST: http://localhost:8080/makereservation
 BODY: 
 {
-	"userId": 1234,
-	"roomId": 1234,
+	"userId": 1234, //get the user id from userinfo endpoint
+	"roomId": 1234, //get the roomid from availability endpoint
 	"quantity": 1
 }
 Response: RESERVED/PENDING_APPROVAL

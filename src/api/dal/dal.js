@@ -91,7 +91,7 @@ class dal {
                     // create Request object
                     var request = new sql.Request();
                     
-                    let query = "update Bonuspoints set PointsAccumulated = " +pointsAccumulated+ ", PointsLeft =" +pointsLeft+", PointsConsumed =" +pointsConsumed+ ", LastUpdatedTs = "+dal.getDateTime() +" where Id = " + "'" + id + "'";
+                    let query = "update Bonuspoints set PointsAccumulated = " +pointsAccumulated+ ", PointsLeft =" +pointsLeft+", PointsConsumed =" +pointsConsumed+ ", LastUpdatedTs = " + "'" + dal.getDateTime() +  "'" +" where Id = " + "'" + id + "'";
                     // query to the database and get the records
                     request.query(query  , function (err, recordset) {
                         
@@ -123,7 +123,7 @@ class dal {
                     // create Request object
                     var request = new sql.Request();
                     
-                    let query = "update hotelroominfo set availableAmount = " +availableAmount+ ", LastUpdateTs = "+new Date().getUTCDate() +" where Id = " + "'" + id + "'";
+                    let query = "update hotelroominfo set availableAmount = " +availableAmount+ ", LastUpdateTs = "+ "'" + dal.getDateTime() + "'" +" where Id = " + "'" + id + "'";
                     // query to the database and get the records
                     request.query(query  , function (err, recordset) {
                         
