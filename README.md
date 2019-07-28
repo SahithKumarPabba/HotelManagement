@@ -23,12 +23,14 @@ Default port is 8080.
 
 localhost:8080/health
 
-#spin up DB
+##spin up DB & Sevice 
 
 docker-compose build
 docker-compose up
 
-#Make a reservation
+    ->Service will start listening on port 8080.
+
+##Make a reservation
 
 Endpoint: POST: http://localhost:8080/makereservation
 BODY: 
