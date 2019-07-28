@@ -16,7 +16,11 @@ class dal {
         // connect to your database
         sql.connect(config, function (err) {
 
-            if (err) console.log(err);
+            if (err) {
+                console.log(err);
+                sql.close();
+                res.status(500).send(err)
+            }
 
             // create Request object
             var request = new sql.Request();
@@ -24,7 +28,11 @@ class dal {
             // query to the database and get the records
             request.query('select * from ' + tableName, function (err, recordset) {
                 
-                if (err) console.log(err);
+                if (err) {
+                    console.log(err);
+                    sql.close();
+                    res.status(500).send(err)
+                }
                 sql.close();
 
                 // send records as a response
@@ -41,7 +49,11 @@ class dal {
         // connect to your database
             sql.connect(config, function (err) {
 
-                if (err) console.log(err);
+                if (err) {
+                    console.log(err);
+                    sql.close();
+                    res.status(500).send(err)
+                }
 
                 // create Request object
                 var request = new sql.Request();
@@ -49,7 +61,11 @@ class dal {
                 // query to the database and get the records
                 request.query("select * from " + tableName + " where  " + columnname + "=" + "'" + paramname + "'" , function (err, recordset) {
                     
-                    if (err) console.log(err);
+                    if (err) {
+                        console.log(err);
+                        sql.close();
+                        res.status(500).send(err)
+                    }
                     sql.close();
 
                     // send records as a response
@@ -68,17 +84,19 @@ class dal {
                 sql.connect(config, function (err) {
     
                     if (err) {
+                        sql.close();
                         reject(err);
                     }
     
                     // create Request object
                     var request = new sql.Request();
                     
-                    let query = "update Bonuspoints set PointsAccumulated = " +pointsAccumulated+ ", PointsLeft =" +pointsLeft+", PointsConsumed =" +pointsConsumed+ ", LastUpdatedTs = "+new Date().getUTCDate() +" where Id = " + "'" + id + "'";
+                    let query = "update Bonuspoints set PointsAccumulated = " +pointsAccumulated+ ", PointsLeft =" +pointsLeft+", PointsConsumed =" +pointsConsumed+ ", LastUpdatedTs = "+dal.getDateTime() +" where Id = " + "'" + id + "'";
                     // query to the database and get the records
                     request.query(query  , function (err, recordset) {
                         
                         if (err) {
+                            sql.close();
                             reject(err);
                         }
                         sql.close();
@@ -98,6 +116,7 @@ class dal {
                 sql.connect(config, function (err) {
     
                     if (err) {
+                        sql.close();
                         reject(err);
                     }
     
@@ -109,6 +128,7 @@ class dal {
                     request.query(query  , function (err, recordset) {
                         
                         if (err) {
+                            sql.close();
                             reject(err);
                         }
                         sql.close();
@@ -129,6 +149,7 @@ class dal {
                 sql.connect(config, function (err) {
     
                     if (err) {
+                        sql.close();
                         reject(err);
                     }
     
@@ -141,6 +162,7 @@ class dal {
                     request.query(query , function (err, recordset) {
                         
                         if (err) {
+                            sql.close();
                             reject(err);
                         }
                         sql.close();
